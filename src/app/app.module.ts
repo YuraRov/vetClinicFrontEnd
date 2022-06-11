@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProceduresPageComponent } from './components/procedureComponents/procedures-page/procedures-page.component';
+import { SpecializationListComponent } from './components/specilizationComponents/specialization-list/specialization-list.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import { SpecializationItemComponent } from './components/specilizationComponents/specialization-item/specialization-item.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +25,11 @@ const appRoutes: Routes = [
   {
     path: 'procedures',
     component: ProceduresPageComponent
+  },
+
+  {
+    path:'specializations',
+    component: SpecializationListComponent
   }
 ];
 
@@ -30,7 +38,9 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ProceduresPageComponent
+    ProceduresPageComponent,
+    SpecializationListComponent,
+    SpecializationItemComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +51,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatRadioModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
