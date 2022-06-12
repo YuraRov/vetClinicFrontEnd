@@ -1,13 +1,68 @@
 <mat-accordion>
 
-  <mat-expansion-panel>
+  <ng-template ngFor let-specialization [ngForOf]="specializations">
 
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        name
-      </mat-panel-title>
-    </mat-expansion-panel-header>
+    <mat-expansion-panel>
 
-  </mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{specialization.name}}
+        </mat-panel-title>
+
+        <div class="button-wrapper">
+          <button mat-icon-button>
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+
+          <button mat-icon-button>
+            <mat-icon color="primary">delete</mat-icon>
+          </button>
+        </div>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Doctors
+          </mat-panel-title>
+
+          <div>
+            <button mat-icon-button>
+              <mat-icon color="primary">add</mat-icon>
+            </button>
+          </div>
+
+        </mat-expansion-panel-header>
+
+        doctor
+        <button mat-icon-button>
+          <mat-icon color="primary">cancel</mat-icon>
+        </button>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Procedures
+          </mat-panel-title>
+          <div>
+            <button mat-icon-button>
+              <mat-icon color="primary">add</mat-icon>
+            </button>
+          </div>
+        </mat-expansion-panel-header>
+
+        procedure
+        <button mat-icon-button>
+          <mat-icon color="primary">cancel</mat-icon>
+        </button>
+
+      </mat-expansion-panel>
+
+
+    </mat-expansion-panel>
+
+  </ng-template>
 
 </mat-accordion>

@@ -15,7 +15,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProceduresPageComponent } from './components/procedureComponents/procedures-page/procedures-page.component';
 import { SpecializationListComponent } from './components/specilizationComponents/specialization-list/specialization-list.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import { SpecializationItemComponent } from './components/specilizationComponents/specialization-item/specialization-item.component';
 
 const appRoutes: Routes = [
   {
@@ -39,8 +38,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     ProceduresPageComponent,
-    SpecializationListComponent,
-    SpecializationItemComponent
+    SpecializationListComponent
   ],
   imports: [
     BrowserModule,
