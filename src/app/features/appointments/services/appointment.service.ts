@@ -4,6 +4,7 @@ import { Appointment } from 'src/app/core/models/Appointment';
 import { ResourceService } from 'src/app/core/services/resourceService/resource.service';
 import { Location } from "@angular/common";
 import { catchError, map, Observable } from 'rxjs';
+import { AppointmentParameters } from 'src/app/core/models/operational-models/QueryParameters/AppointmentParameters';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,16 @@ export class AppointmentService extends ResourceService<Appointment>{
       map((result) => new this.tConstructor(result)),
       catchError(this.handleError<Appointment>('updateAppointment'))
     )
+  }
+
+  getAllAppointment(pageNumber: number = 1, pageSize: number = 4)
+    : Observable<AppointmentParameters> {
+    let url = `${this.apiUrl}?PageNumber=${pageNumber}&PageSize=${pageSize}`;
+
+    return this.http.get<AppointmentParameters>(url, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<AppointmentParameters>('GetAllAppointment'))
+      );
   }
 
 }

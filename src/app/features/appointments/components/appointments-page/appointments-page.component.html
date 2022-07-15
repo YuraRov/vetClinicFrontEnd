@@ -79,9 +79,24 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
-      <mat-paginator class="mat-elevation-z6 row"
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        aria-label="Select page of users"></mat-paginator>
+      <div class="paginator mat-elevation-z8 elem">
+        <div>Items per page</div>
+        <div>
+          <select (change)="selectPageSizeOptions()" [(ngModel)]="currentPageSize">
+            <option *ngFor="let pageSizeOption of pageSizeOptions">
+              {{pageSizeOption.name}}
+            </option>
+          </select>
+        </div>
+        <div>{{pageInfo?.currentPage ?? 0}} of {{pageInfo?.totalPages ?? 0}}</div>
+        <div>
+          <button mat-raised-button [disabled]="!(pageInfo?.hasPrevious ?? false)" (click)="onPrevPageClick()" color="info">Prev</button>
+        </div>
+        <div class="next-btn">
+          <button mat-raised-button [disabled]="!(pageInfo?.hasNext ?? false)" (click)="onNextPageClick()" color="info">Next</button>
+        </div>
+      </div>
+  
 
       <button class="new-appointment-button mat-elevation-z8"
       mat-stroked-button
@@ -91,3 +106,4 @@
         New Appointment
       </button>
     </div>
+    
