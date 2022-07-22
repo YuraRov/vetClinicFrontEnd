@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path: 'financialStatement',
     loadChildren: () => import('./features/financialStatements/financial-statement.module').then(m => m.FinancialStatementModule)
+  },
+  {
+    path: 'messages',
+    loadChildren: () => import('./features/messaging/messaging.module').then(m => m.MessagingModule)
   }
 ];
 

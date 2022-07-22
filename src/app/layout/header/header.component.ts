@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/User';
 import { AuthService } from 'src/app/core/services/authService/auth.service';
+import { MessagingService } from 'src/app/features/messaging/services/messaging.service';
 import { UserService } from 'src/app/features/userDashboard/services/userService/user.service';
 import { LoginComponent } from '../../shared/components/authComponents/login-page/login.component'
 import { SignupComponent } from '../../shared/components/authComponents/signup-page/signup.component'
@@ -20,7 +21,8 @@ export class HeaderComponent implements OnInit {
     private matDialog: MatDialog,
     public authService: AuthService,
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    public messagingService: MessagingService
   ) 
   {
   }

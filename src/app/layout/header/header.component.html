@@ -24,9 +24,18 @@
   <div class="user-operations-container">
     <a mat-button *ngIf="!authService.isAuthorized()" routerLink="auth/signup">Sign up</a>
     <a mat-button *ngIf="!authService.isAuthorized()" routerLink="auth/login">Login</a>
-
+    <a mat-button *ngIf="authService.isAuthorized()" routerLink="/messages">
+      <mat-icon 
+         [matBadge]="messagingService.numberOfUnreadMessages != 0 ? 
+                     messagingService.numberOfUnreadMessages : null" 
+         matBadgeColor="warn">
+         email
+      </mat-icon> 
+    </a>
     <a *ngIf="authService.isAuthorized()" [routerLink]="['/users', authService.getUserId()]">
-      <div class="user-img-wrapper"><img [src]="profilePic" alt="My profile" ></div>
+      <div class="user-img-wrapper">
+         <img [src]="profilePic" (error)="profilePic='/assets/images/default_profile_pic.jpg'" >
+      </div>
     </a>
 
     <a class="logout-button" mat-button *ngIf="authService.isAuthorized()" (click)="onLogout()">Logout</a>

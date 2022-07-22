@@ -1,0 +1,31 @@
+<div class="messages-wrapper">
+    <div class="chats-preview-sidebar">
+        <app-chat-preview 
+            *ngFor="let chat of chats" 
+            [chat]="chat"
+            (click)="onChatSelect(chat)">
+        </app-chat-preview>
+    </div>
+    <div class="chat-window-wrapper">
+        <app-chat-window 
+            *ngIf="selectedChat" 
+            [chat]="selectedChat">
+        </app-chat-window>
+        <div class="select-chat-message" *ngIf="!selectedChat">
+            <span *ngIf="chats.length != 0">
+                Select a chat to start messaging 💬
+            </span>
+            <div class="no-chats-message" *ngIf="chats.length == 0">
+                <span *ngIf="authService.isInRole('Client')">
+                    <p>There is no chats for you. 🤔</p>
+                    If you want to write message to a doctor, 
+                    go to <a routerLink="/doctors">Doctors</a> page and select one. 👩‍⚕️
+                </span> 
+                <span *ngIf="!authService.isInRole('Client')">
+                    <p> Nobody has written messages to you yet 🤔</p>
+                    Await someone to text you 
+                </span> 
+            </div>
+        </div>
+    </div>
+</div>

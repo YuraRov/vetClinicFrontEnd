@@ -1,0 +1,35 @@
+<div class="chat-window">
+    <div class="chat-window-header">
+        <div class="chat-picture-wrapper">
+            <img class="chat-picture" [src]="chat?.picture">
+        </div>
+        <div class="chat-name">{{chat?.name}}</div>
+    </div>
+
+    <div *ngIf="chat?.messages" class="chat-window-messages" #messagesContainer [scrollTop]="scrollTop">
+        <app-message
+            *ngFor="let message of chat?.messages"
+            attr.id="messsage-{{message.id}}"
+            [ngClass]="{'my-message': message.senderId == authService.getUserId()}"
+            [message]="message"
+            observeVisibility
+            (visible)="onReadMessage(message)">
+        </app-message>
+    </div>
+
+    <div class="chat-window-input">
+        <textarea 
+            class="message-input" 
+            placeholder="Write a message..."
+            matInput 
+            [(ngModel)]="messageText"
+            (keydown.enter)="onSendMessage(messageText)">
+        </textarea>
+        <button
+            mat-icon-button
+            *ngIf = "messageText.trim()"
+            (click)="onSendMessage(messageText)">
+            <mat-icon>send</mat-icon>
+        </button>
+    </div>
+</div>

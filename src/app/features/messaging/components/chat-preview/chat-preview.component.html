@@ -1,0 +1,17 @@
+<div class="chat-preview-wrapper">
+    <div class="chat-picture-wrapper">
+        <img class="chat-picture" [src]="chat?.picture">
+    </div>
+    <div class="chat-info">
+        <span class="chat-name">{{chat?.name}}</span>
+        <div class="last-message">
+            <span class="message">{{chat?.lastMessage?.text ?? ''}}</span>
+        </div>
+    </div>
+    <div
+        *ngIf="numberOfUnreadMessages != 0"
+        class="unread-messages-count-column">
+        <span class="unread-messages-count">{{numberOfUnreadMessages}}</span>
+    </div>
+</div>
+<mat-divider></mat-divider>

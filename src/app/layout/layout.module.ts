@@ -6,6 +6,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {RouterModule} from "@angular/router";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge'
 
 @NgModule({
   declarations: [HeaderComponent,FooterComponent],
@@ -15,7 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     RouterModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatBadgeModule
   ]
 })
 export class LayoutModule { }
