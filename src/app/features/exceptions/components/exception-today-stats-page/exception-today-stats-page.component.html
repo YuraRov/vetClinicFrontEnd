@@ -21,7 +21,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    
+
 
     <div class="pagginator row mat-elevation-z8 ">
         <div class="paginatorElemetnPostion">items per page </div>
@@ -32,12 +32,14 @@
                 </option>
             </select>
         </div>
-        <div class="paginatorElemetnPostion">{{pagingInfo?.currentPage??0}} of {{pagingInfo?.totalPages??0}}
+        <div class="paginatorElemetnPostion">
+            {{pagingInfo?.hasNext==false&&pagingInfo?.totalPages==0?0:pagingInfo?.currentPage}} of
+            {{pagingInfo?.totalPages??0}}
         </div>
         <div class="paginatorElemetnPostion"> <button mat-raised-button [disabled]="!(pagingInfo?.hasPrevious??false)"
                 (click)="onPrevButtonInfoClick()" color="info">Prev</button></div>
         <div class="paginatorElemetnPostion"> <button mat-raised-button [disabled]="!(pagingInfo?.hasNext??false)"
                 (click)="onNextButtonInfoClick()" color="info">Next</button></div>
     </div>
-    
+
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSort } from '@angular/material/sort';                    //Specially for sorting
-import { ViewChild } from '@angular/core';                           //Specially for sorting
+import { MatSort } from '@angular/material/sort';                   
+import { ViewChild } from '@angular/core';                           
 import { MatTableDataSource } from '@angular/material/table';
 import { ExceptionStats } from 'src/app/core/models/ExceptionStats';
 import { Router } from '@angular/router';
@@ -15,14 +15,15 @@ import { ExceptionService } from '../../services/exception.service';
 })
 
 export class ExceptionTodayStatsPageComponent implements OnInit {
-  dataSource: MatTableDataSource<ExceptionStats> = new MatTableDataSource();               //Special data class to handle a table
+  dataSource: MatTableDataSource<ExceptionStats> = new MatTableDataSource();            
   @ViewChild(MatSort) sort?: MatSort;
-  displayedColumns: string[] = ['name', 'count'];    //List of column names to be displayed
+  displayedColumns: string[] = ['name', 'count'];   
   pagingInfo: ExceptionParameters | null = null;
   itemsPerPage: number = 5;
   options = [
     { name: "5", value: 5 },
-    { name: "10", value: 10 }
+    { name: "10", value: 10 },
+    { name: "20", value: 20 }
   ]
   constructor(
     private exceptionService: ExceptionService,

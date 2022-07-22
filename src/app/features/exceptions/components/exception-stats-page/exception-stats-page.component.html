@@ -32,7 +32,9 @@
                 </option>
             </select>
         </div>
-        <div class="paginatorElemetnPostion">{{pagingInfo?.currentPage??0}} of {{pagingInfo?.totalPages??0}}
+        <div class="paginatorElemetnPostion">
+            {{pagingInfo?.hasNext==false&&pagingInfo?.totalPages==0?0:pagingInfo?.currentPage}} of
+            {{pagingInfo?.totalPages??0}}
         </div>
         <div class="paginatorElemetnPostion"> <button mat-raised-button [disabled]="!(pagingInfo?.hasPrevious??false)"
                 (click)="onPrevButtonInfoClick()" color="info">Prev</button></div>

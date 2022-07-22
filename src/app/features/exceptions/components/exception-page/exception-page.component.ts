@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSort } from '@angular/material/sort';                    //Specially for sorting
-import { ViewChild } from '@angular/core';                           //Specially for sorting
+import { MatSort } from '@angular/material/sort';                  
+import { ViewChild } from '@angular/core';                         
 import { MatTableDataSource } from '@angular/material/table';
 import { Exception } from 'src/app/core/models/Exception';
 import { Router } from '@angular/router';
@@ -22,7 +22,8 @@ export class ExceptionPageComponent implements OnInit {
   itemsPerPage: number = 5;
   options = [
     { name: "5", value: 5 },
-    { name: "10", value: 10 }
+    { name: "10", value: 10 },
+    { name: "20", value: 20 }
   ]
 
   constructor(
