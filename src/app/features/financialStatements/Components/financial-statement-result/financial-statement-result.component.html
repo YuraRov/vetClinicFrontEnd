@@ -97,4 +97,8 @@
       <button mat-raised-button [disabled]="!(pageInfo?.hasNext ?? false)" (click)="onNextPageClick()" color="info">Next</button>
     </div>
   </div>
+
+  <div>
+    <button mat-raised-button color="primary" (click)="MakePdf()">Download</button>
+  </div>
 </div>

@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FileSaverModule } from 'ngx-filesaver';
 
 
 import { FinancialStatementRoutingModule } from './financial-statement-routing.module';
@@ -34,7 +35,8 @@ import { FinancialStatementResultComponent } from './Components/financial-statem
     MatTableModule,
     MatListModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FileSaverModule
   ]
 })
 export class FinancialStatementModule { }

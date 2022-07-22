@@ -1,13 +1,14 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { FileSaverService } from 'ngx-filesaver';
 import { FinStatementOneMonth } from '../../../../core/models/FinancialStatement/FinStatementOneMonth';
 import { MyDate } from '../../../../core/models/FinancialStatement/MyDate';
 import { FinancialStatementParameters } from '../../../../core/models/operational-models/QueryParameters/FinancialStatementParameters';
 import { FinancialStatementService } from '../../../../core/services/financialService/financial-statement.service';
 import { FinancialStatementPageComponent } from '../financial-statement-page/financial-statement-page.component';
+import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-financial-statement-result',
@@ -36,19 +37,22 @@ export class FinancialStatementResultComponent implements OnInit {
   pageInfo: FinancialStatementParameters | null = null;
   currentPageSize: number = this.pageSizeOptions[0].value;
 
-  @ViewChild(MatPaginator) paginator?: MatPaginator;
-
     constructor(
     @Inject(MAT_DIALOG_DATA) private date: MyDate,
     private finService: FinancialStatementService,
-    public dialogRef: MatDialogRef<FinancialStatementPageComponent>) {
+      public dialogRef: MatDialogRef<FinancialStatementPageComponent>,
+      private fS: FileSaverService) {
   }
 
   ngOnInit(): void {
     this.updateList();
   }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator!;
+
+  MakePdf() {
+
+    this.finService.getPDF(this.date, 1, this.pageInfo?.totalCount).subscribe(blob => {
+      saveAs(blob, 'FinancialStatement.pdf')
+    });
   }
 
   private updateList(pageNumber: number = 1, pageSize: number = 5): void {
@@ -74,9 +78,5 @@ export class FinancialStatementResultComponent implements OnInit {
 
   selectPageSizeOptions(): void {
     this.updateList(1, this.currentPageSize);
-  }
-
-  onClick(): void {
-    console.log("click");
   }
 }
