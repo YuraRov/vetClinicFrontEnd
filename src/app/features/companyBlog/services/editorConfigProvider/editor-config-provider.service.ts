@@ -29,6 +29,7 @@ export class EditorConfigProviderService {
         tag: 'h2'
       }
     ],
+    uploadUrl: 'https://localhost:5001/api/articles/upload',
     toolbarHiddenButtons: [
       [
         'strikeThrough',

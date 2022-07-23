@@ -23,7 +23,8 @@ export class ProceduresPageComponent implements OnInit {
 
   pageSizeOptions: { name: string; value: number }[] = [
     { name: '5', value: 5 },
-    { name: '10', value: 10 }
+    { name: '10', value: 10 },
+    { name: '20', value: 20 }
   ];
 
   pageInfo: ProcedureParameters | null = null;
@@ -41,11 +42,16 @@ export class ProceduresPageComponent implements OnInit {
 
   private updateList(
     pageNumber: number = 1,
-    pageSize: number = 5,
-    filterParam: string | null = null,
-    orderByParam: string | null = null,
-    orderByDirection: string | null = null): void {
-    this.procedureService.getAllPaged(pageNumber, pageSize, filterParam, orderByParam, orderByDirection).subscribe(data => {
+    pageSize: number = this.currentPageSize!,
+    filterParam: string | null = this.filterValue,
+    orderByParam: string | null = this.currentOrderByOption,
+    orderByDirection: string | null = this.currentOrderByDirection): void {
+    this.procedureService.getAllPaged(
+      pageNumber,
+      pageSize,
+      filterParam,
+      orderByParam,
+      orderByDirection).subscribe(data => {
       this.dataSource.data = data.entities;
       this.updatePageInfo(data);
     });
@@ -119,12 +125,12 @@ export class ProceduresPageComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.filterValue = (event.target as HTMLInputElement).value;
+    this.updateList(1,
+      this.currentPageSize,
+      this.filterValue,
+      this.currentOrderByOption,
+      this.currentOrderByDirection);
   }
 
   selectPageSizeOptions(): void {
@@ -133,13 +139,23 @@ export class ProceduresPageComponent implements OnInit {
 
   onPrevPageClick(): void {
     if (this.pageInfo?.hasPrevious) {
-      this.updateList(this.pageInfo!.currentPage - 1, this.pageInfo!.pageSize, this.currentOrderByOption);
+      this.updateList(
+        this.pageInfo!.currentPage - 1,
+        this.pageInfo!.pageSize,
+        this.filterValue,
+        this.currentOrderByOption,
+        this.currentOrderByDirection);
     }
   }
 
   onNextPageClick(): void {
     if (this.pageInfo?.hasNext) {
-      this.updateList(this.pageInfo!.currentPage + 1, this.pageInfo!.pageSize, this.currentOrderByOption);
+      this.updateList(
+        this.pageInfo!.currentPage + 1,
+        this.pageInfo!.pageSize,
+        this.filterValue,
+        this.currentOrderByOption,
+        this.currentOrderByDirection);
     }
   }
 

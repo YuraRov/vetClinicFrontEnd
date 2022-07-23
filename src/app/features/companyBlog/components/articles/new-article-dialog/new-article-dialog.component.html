@@ -19,12 +19,12 @@
       <button mat-flat-button (click)="onNoClick()">Discard</button>
       <button
         mat-flat-button
-        [disabled]="!form.valid"
+        [disabled]="!(form.valid && form.dirty)"
         (click)="onSaveDraft()">Save Draft</button>
       <button
         mat-raised-button
         type="submit"
-        [disabled]="!form.valid"
+        [disabled]="!(form.valid && form.dirty)"
         (click)="onPublish()">Publish</button>
     </div>
   </div>

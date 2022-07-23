@@ -28,6 +28,9 @@ export class ViewArticleComponent implements OnInit {
               private route: ActivatedRoute,
               public dateService: DateTimeService){
     this.updateContent();
+    route.paramMap.subscribe(() => {
+      this.updateContent();
+    })
   }
 
   ngOnInit(): void {

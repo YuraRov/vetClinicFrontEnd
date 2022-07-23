@@ -49,10 +49,17 @@ export class ArticleService extends ResourceService<Article>{
       url += `&OrderByDirection=${orderByDirection}`;
     }
 
-    console.log(url);
     return this.http.get<ArticleParameters>(url, this.httpOptions)
       .pipe(
         catchError(this.handleError<ArticleParameters>('getAll'))
+      );
+  }
+
+  discardEditing(): Observable<void>{
+    const url: string = `${this.apiUrl}/discard`
+    return this.httpClient.post<void>(url, {}, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<void>('discardEditing'))
       );
   }
 

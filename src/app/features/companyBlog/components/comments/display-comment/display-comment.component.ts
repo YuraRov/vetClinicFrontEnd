@@ -78,7 +78,6 @@ export class DisplayCommentComponent implements OnInit {
       .getById(this.comment!.authorId!)
       .subscribe(data => {
         this.profilePickTemp = data.profilePicture!;
-        console.log(data.profilePicture)
       });
   }
 }

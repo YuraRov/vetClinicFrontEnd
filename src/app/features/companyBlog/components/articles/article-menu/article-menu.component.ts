@@ -58,6 +58,13 @@ export class ArticleMenuComponent implements OnInit {
                 this.articleChange.emit(this.currentArticle!)
                 }
               );
+          } else {
+            this.snackBar.open(`The article hasn't been updated!`, 'Close', {
+              duration: 4000,
+              panelClass: ['green-snackbar'],
+              horizontalPosition: 'center',
+              verticalPosition: 'top'
+            });
           }
         }
       );
@@ -107,6 +114,6 @@ export class ArticleMenuComponent implements OnInit {
 
   onPreview(event: Event) : void{
     event.stopPropagation();
-    this.router.navigateByUrl(`preview/${this.currentArticle!.id}`);
+    this.router.navigateByUrl(`${this.router.url}/preview/${this.currentArticle!.id!}`);
   }
 }

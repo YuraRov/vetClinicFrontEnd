@@ -33,4 +33,8 @@ export class ArticleCardComponent implements OnInit {
   onDeleteArticle(): void{
     this.deletedArticle.emit(this.article!)
   }
+
+  onArticleChange(article: Article):void{
+    this.article = article;
+  }
 }
