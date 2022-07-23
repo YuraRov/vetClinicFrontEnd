@@ -11,6 +11,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -19,18 +20,19 @@ import {MatExpansionModule} from "@angular/material/expansion";
     FeedbacksComponent,
     FeedbackAddComponent
   ],
-  imports: [
-    CommonModule,
-    FeedbackRoutingModule,
-    MatTableModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatRadioModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-    MatExpansionModule
-  ]
+    imports: [
+        CommonModule,
+        FeedbackRoutingModule,
+        MatTableModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatRadioModule,
+        MatIconModule,
+        MatInputModule,
+        MatButtonModule,
+        MatExpansionModule,
+        MatPaginatorModule
+    ]
 })
 export class FeedbackModule { }

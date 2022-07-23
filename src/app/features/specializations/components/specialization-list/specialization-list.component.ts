@@ -15,7 +15,7 @@ import {
 import {
   SpecializationAddUserDialogComponent
 } from "../specialization-add-user-dialog/specialization-add-user-dialog.component";
-import {SpecializationParameters} from "../../../../core/models/operational-models/SpecializationParameters";
+import {SpecializationParameters} from "../../../../core/models/operational-models/QueryParameters/SpecializationParameters";
 
 @Component({
   selector: 'app-specializationService-list',
@@ -32,8 +32,9 @@ export class SpecializationListComponent implements OnInit {
   columnsToDisplay = ["name","procedures","users", "edit", "delete"];
 
   pageSizeOptions: { name: string; value: number }[] = [
-    { name: '4', value: 4 },
-    { name: '10', value: 10 }
+    { name: '5', value: 5 },
+    { name: '10', value: 10 },
+    { name: '20', value: 20 }
   ];
 
   pageInfo: SpecializationParameters | null = null;

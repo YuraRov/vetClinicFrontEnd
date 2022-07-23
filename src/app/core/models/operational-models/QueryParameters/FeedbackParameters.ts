@@ -1,11 +1,11 @@
-import {Specialization} from "../Specialization";
+import {Feedback} from "../../Feedback";
 
-export interface SpecializationParameters{
+export interface FeedbackParameters {
   totalCount: number;
   pageSize: number;
   currentPage: number;
   totalPages: number;
   hasNext: boolean;
   hasPrevious:boolean;
-  entities : Specialization[];
+  entities: Feedback[];
 }

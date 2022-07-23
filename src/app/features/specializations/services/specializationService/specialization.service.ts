@@ -6,7 +6,7 @@ import {ResourceService} from "../../../../core/services/resourceService/resourc
 import {Location} from "@angular/common";
 import {catchError} from "rxjs/operators";
 import {Procedure} from "../../../../core/models/Procedure";
-import {SpecializationParameters} from "../../../../core/models/operational-models/SpecializationParameters";
+import {SpecializationParameters} from "../../../../core/models/operational-models/QueryParameters/SpecializationParameters";
 import {User} from "../../../../core/models/User";
 
 @Injectable({

@@ -2,12 +2,14 @@
 <div>
   <div class="collate">
 
-    <mat-form-field class="filter-sort" appearance="outline">
+    <mat-form-field class="row" appearance="outline">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="User">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Placeholder" #input>
+      <mat-icon matSuffix color="primary">search</mat-icon>
     </mat-form-field>
 
   </div>
+
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 elem">
     <ng-container matColumnDef="email">
@@ -79,24 +81,24 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <div class="paginator mat-elevation-z8 elem">
+
+  <div class="paginator">
     <div>Items per page</div>
     <div>
-      <select (change)="selectPageSizeOption()" [(ngModel)]="currentPageSize">
-        <option *ngFor="let sizeOption of pageSizeOptions">
-          {{sizeOption.name}}
+      <select (change)="selectPageSizeOptions()" [(ngModel)]="currentPageSize">
+        <option *ngFor="let pageSizeOption of pageSizeOptions">
+          {{pageSizeOption.name}}
         </option>
       </select>
     </div>
-    <div>Page: {{this.currentPageNumber}}</div>
+    <div>{{pageInfo?.currentPage ?? 0}} of {{pageInfo?.totalPages ?? 0}}</div>
     <div>
-      <button mat-raised-button [disabled]="currentPageNumber == 1"
-              (click)="onPrevPageClick()" color="info">Prev</button>
+      <button mat-flat-button [disabled]="!(pageInfo?.hasPrevious ?? false)" (click)="onPrevPageClick()" color="info"><mat-icon>chevron_left</mat-icon></button>
     </div>
     <div class="next-btn">
-      <button mat-raised-button [disabled]="dataSource.data.length < currentPageSize"
-              (click)="onNextPageClick()" color="info">Next</button>
+      <button mat-flat-button [disabled]="!(pageInfo?.hasNext ?? false)" (click)="onNextPageClick()" color="info"><mat-icon>chevron_right</mat-icon></button>
     </div>
   </div>
 </div>
+
 </div>

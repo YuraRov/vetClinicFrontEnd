@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {FeedbackService} from "../../../core/services/feedbackService/feedback.service";
+import {FeedbackService} from "../feedbacks/services/feedback.service";
 import {AuthService} from "../../../core/services/authService/auth.service";
 import {Feedback} from "../../../core/models/Feedback";
 import {UserService} from "../../userDashboard/services/userService/user.service";
